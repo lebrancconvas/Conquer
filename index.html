@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,8 +21,9 @@
             font-family: 'Copperplate Gothic Light';
         }
 
-        .submit {
-            display: block;
+        .submit,
+        .clear {
+            display: inline-block;
             margin-left: auto;
             margin-right: auto;
             padding: 4px;
@@ -35,21 +37,34 @@
             transform: scale(1);
         }
 
-        .submit > h3 {
+        .submit > h3,
+        .clear > h3 {
             font-family: 'Copperplate Gothic Light';
             text-align: center;
         }
 
-        .submit:hover {
+        .submit:hover,
+        .clear:hover {
             box-shadow: 3px 3px 3px 3px rgba(75, 75, 75, 0.25);
         }
 
-        .submit:active {
+        .submit:active,
+        .clear:active {
             box-shadow: 1px 1px 1px 1px rgba(75,75,75,0.25);
             transform: scale(.97);
         }
+
+        .chat {
+            padding: 100px;
+            width: 20%;
+            margin: 10px;
+            background: rgb(250, 206, 206);
+            border-radius: 10px;
+            box-shadow: 1px 1px 0.5px rgba(0,0,0,0.80);
+        }
     </style>
 </head>
+
 <body>
     <center>
         <div class="head">
@@ -59,11 +74,36 @@
         <div class="input-word">
             <input type="text" name="input" id="input">
         </div>
-        <div class="submit">
-            <h3>Submit</h3>
+        <div class="nav">
+            <div class="submit" onclick="submit()">
+                <h3>Submit</h3>
+            </div>
+            <div class="clear" onclick="clear()">
+                <h3>Clear</h3>
+            </div>
+        </div>
+        <div class="chat">
+            <div id="type-chat"></div>
         </div>
     </center>
     <script>
+        
+
+        function submit() {
+            var input = document.getElementById('input').value
+            var chattext = document.getElementById('type-chat')
+            var text = document.createElement('div')
+            var textNode = document.createTextNode(`User: ${input}`)
+            text.appendChild(textNode)
+            chattext.appendChild(text)
+        }
+
+        function clear() {
+            var chat = document.getElementsByClassName('chat')
+            var chattext = document.getElementById('type-chat')
+            chat.removeChild(chattext)
+        }
     </script>
 </body>
+
 </html>
