@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Conquer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="swords.png" type="image/png">
     <style>
         .input-word > #input {
             display: block;
@@ -94,6 +95,10 @@
             var chattext = document.getElementById('type-chat')
             var text = document.createElement('div')
             var textNode = document.createTextNode(`User: ${input}`)
+            var submit = document.getElementsByClassName('submit')
+            if(input == "") {
+                submit.disabled = true
+            }
             text.appendChild(textNode)
             chattext.appendChild(text)
         }
